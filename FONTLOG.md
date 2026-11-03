@@ -25,6 +25,26 @@ Exact notices and license terms are recorded in `OFL.txt` and
 
 ## ChangeLog
 
+### 3 November 2026 - Presevka 0.8.2 - Kwanho Lee (이관호)
+
+- Padded the Win metrics, so legacy Windows applications stop cutting the tops
+  off accented capitals. GDI clips a glyph to `usWinAscent` and
+  `usWinDescent`, which Iosevka derives from its 1250 leading as 965 above the
+  baseline and 285 below. Raising the cap in 0.8.0 carried every accent up with
+  it: where stock Iosevka leaves 191 mapped characters reaching past 965, this
+  font left 359.
+- `winMetricAscenderPad` is now 80 and `winMetricDescenderPad` 40, which brings
+  308 of them back -- among them the Czech `Ž Š Č Ř`, the Vietnamese `ồ ố ề ế`
+  and the Cyrillic `Ѯ Ӳ`. What stays clipped is the uppercase double-accent
+  stacks, 51 at Regular and 98 at Black, led by `Ǚ` at 1247. Covering those
+  would take a pad of 282 rather than 80, which is a 45% taller line in GDI
+  against this 10%, to rescue characters nobody sets in a terminal.
+- Nothing changes outside GDI. The typo metrics are untouched and
+  `USE_TYPO_METRICS` stays set, so DirectWrite still lays out from 965 and 285:
+  Windows Terminal, VS Code and Visual Studio keep the line height they had.
+- No outline moves. Advance widths, coverage and naming are unchanged, so line
+  and column counts hold.
+
 ### 29 October 2026 - Presevka 0.8.1 - Kwanho Lee (이관호)
 
 - Drew the Hangul a little smaller: the enlargement over Pretendard's own

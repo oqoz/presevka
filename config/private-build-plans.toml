@@ -137,3 +137,24 @@ xHeight = 594
 # cell. 0.7 opened the counters but cost too much of the gap between letters;
 # 0.95 is meant to be felt rather than seen.
 sb = 'default_sb * 1.05'
+
+# Widen the Win metrics box so legacy Windows applications stop cutting the
+# tops off stacked accents.
+#
+# GDI clips a glyph to usWinAscent and usWinDescent, and Iosevka derives both
+# from its 1250 leading: 965 above the baseline and 285 below. Raising the cap
+# to 792 carried every accent up with it, so where stock Iosevka has 191
+# mapped characters reaching past 965, this font had 359.
+#
+# 80 fetches 308 of them back, among them the Czech Ž Š Č Ř, the Vietnamese
+# ồ ố ề ế and the Cyrillic Ѯ Ӳ. What stays clipped is 51 uppercase
+# double-accent stacks, led by Ǚ at 1247, and covering those would mean 282
+# rather than 80: a 45% taller line in GDI against this 10%, to rescue
+# characters nobody sets in a terminal. 40 below does the same for the
+# combining marks that hang lowest.
+#
+# Nothing changes outside GDI. USE_TYPO_METRICS is set, so DirectWrite lays
+# out from the typo metrics, which these pads do not touch; Windows Terminal,
+# VS Code and Visual Studio keep the line height they have now.
+winMetricAscenderPad = 80
+winMetricDescenderPad = 40
