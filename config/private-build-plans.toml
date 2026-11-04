@@ -130,7 +130,7 @@ css = "normal"
 # centres are a placement, handled where the Hangul is fitted, while the cap
 # governs how the Hangul stands against the Latin.
 [buildPlans.PresevkaBase500.metricOverride]
-# EXPERIMENT (uncommitted): D2Coding's proportions.
+# EXPERIMENT: Iosevka's own vertical metrics for the Latin.
 #
 # D2Coding is the Korean coding font people call readable, and measuring it
 # says the readability is not in its Hangul. Its syllables fill 82.5% of the
@@ -143,13 +143,17 @@ css = "normal"
 # larger. Shrinking the Latin is the cheap direction, because the Latin has no
 # cell wall to hit while the Hangul is already near its 1000.
 #
-# 694 is D2Coding's cap. The x-height follows at the 0.750 this font keeps,
-# which lands on 520 against D2Coding's own 526.
+# This build goes one step further back: 735 and 520 are Iosevka's own
+# figures, which Adwaita Mono and Sarasa Gothic also keep. It sits between
+# the 694 tried before and the 792 that shipped, and it is the only one of
+# the three whose x over cap, 0.707, is a value some other monospace holds.
 #
-# What it costs is the Hangul standing at 1.365 of the cap rather than 1.196.
-# D2Coding itself sits at 1.313 and 0.7.0 was 1.291, so this is past both.
-cap = 694
-ascender = 694
+# The Hangul then stands at 1.289 of the cap, against 1.364 at 694, 1.196
+# at 792, and D2Coding's 1.313. Nothing but the cap moves: the lowercase is
+# the same 520 and the advance the same 500, so what a line of mostly
+# lowercase code looks like does not change -- only the capitals grow 6%.
+cap = 735
+ascender = 735
 xHeight = 520
 # Trim the side bearings a touch, so Iosevka draws into slightly more of the
 # cell. 0.7 opened the counters but cost too much of the gap between letters;
