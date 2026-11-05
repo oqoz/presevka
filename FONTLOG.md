@@ -25,6 +25,48 @@ Exact notices and license terms are recorded in `OFL.txt` and
 
 ## ChangeLog
 
+### 5 November 2026 - Presevka 0.9.0 - Kwanho Lee (이관호)
+
+Re-proportioned, toward reading. This is the first release whose text looks
+noticeably different from the one before it; a file set in 0.8.x will not look
+the same.
+
+- Up to 0.8.2 the fitting worked outward from the Hangul: the syllables were
+  enlarged until they nearly filled the 1000-unit cell, and the Latin was
+  raised to stand beside them, which took the cap to 792. That settles how a
+  syllable looks against a capital. It is the wrong question, because code is
+  mostly lowercase, and what governs a line is how much width a lowercase
+  letter gets against its own height.
+- The cap comes down from 792 to 694 and the x-height from 594 to 526. A
+  lowercase letter now has 0.720 of the cap in width where it had 0.631;
+  Iosevka itself draws 0.680 and Pretendard gives its own lowercase 0.719.
+  Nothing in the Latin is redrawn: Iosevka is parametric, so it draws at the
+  smaller cap rather than scaling down, and the stem stays 78 units where a
+  12% scale would have left 68.
+- The side bearings go back to Iosevka's default. The 1.05 of 0.8.x was there
+  to open gaps that the taller lowercase had eaten, and with the cap down they
+  are not eaten; `o` returns to 388 units from 382.
+- The Hangul is no longer pushed to fill its cell. The enlargement goes from
+  1.11 to 1.067, putting a syllable's ink at 0.912 of the em rather than
+  0.947. Measured as how much of its own cell each script fills, the two now
+  stand 4.5 points apart -- 82.1% against `o`'s 77.6% -- where 0.8.0 had
+  opened them to 9.4. The cost is spacing, 21.8% of the ink between one
+  syllable and the next, which is what 0.7.0 ran at.
+- The line box narrows from 1250 to 1160. Iosevka's 1250 is drawn around its
+  own taller Latin, and with the cap down and the syllables smaller the rest
+  was air. Every syllable still clears it.
+- Hangul strokes are drawn at 1.09 of the Latin rather than 0.96. The earlier
+  figure came from a syllable packing two or three jamo into one square and so
+  reading darker at an equal stroke, which holds at display sizes and gives
+  back least at 11-13px, where a thin horizontal has the least to lose before
+  it goes. Pretendard draws its own Hangul heavier than its Latin as well.
+- Thin is much closer to the rest for it. Pretendard's weight axis stops at 45
+  and still cannot be drawn lighter, but against the higher target that floor
+  is 10% out rather than 30%. It remains the one weight whose Hangul does not
+  match its Latin.
+- Advance widths, coverage and naming are unchanged, so line and column counts
+  hold.
+
 ### 3 November 2026 - Presevka 0.8.2 - Kwanho Lee (이관호)
 
 - Padded the Win metrics, so legacy Windows applications stop cutting the tops
