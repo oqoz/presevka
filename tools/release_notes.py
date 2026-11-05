@@ -66,7 +66,7 @@ The record of what changed is in `FONTLOG.md` inside each archive.
 """
 
 TAIL_KO_NO_ARCHIVE = """\
-변경 이력은 저장소의 [`FONTLOG.md`](https://github.com/xkho/presevka/blob/main/FONTLOG.md)에 있습니다.
+변경 이력은 저장소의 [`FONTLOG.md`](https://github.com/oqoz/presevka/blob/main/FONTLOG.md)에 있습니다.
 """
 
 TAIL_EN_NO_ARCHIVE = """\
@@ -92,7 +92,7 @@ USES = {
 
 # Where a release's own assets are served from. The name in the table is the
 # link, so the table is the download rather than a label for one further down.
-DOWNLOAD_URL = "https://github.com/xkho/presevka/releases/download/v{version}/{name}"
+DOWNLOAD_URL = "https://github.com/oqoz/presevka/releases/download/v{version}/{name}"
 
 
 def downloads(version: str, archives: list[str], english: bool) -> str:

@@ -19,7 +19,7 @@ def _font_revision(version: str) -> float:
 # Single source of truth. merge_fonts.py stamps these into every face and
 # qa_font.py verifies them, so a release bump only happens here and in
 # pyproject.toml.
-PRESEVKA_VERSION = "0.8.2"
+PRESEVKA_VERSION = "0.9.0"
 PRESEVKA_FONT_REVISION = _font_revision(PRESEVKA_VERSION)
 
 PRESEVKA_WEIGHTS = (
@@ -58,18 +58,20 @@ PRESEVKA_HANGUL_CELL = 1000
 # Black's widest syllable exactly to the cell wall. 0.8.0 took that ceiling, to
 # within the 1.1297 that left Black 12 units of air on each side.
 #
-# It was still too much. Taking the ceiling is a decision about the Hangul
-# alone, and the Hangul is not read alone: code is mostly lowercase Latin, and
-# against lowercase the filled syllables read a size larger than the letters
-# beside them. The comparison that shows it is how much of its own cell each
-# script fills. At 1.1297 a mean syllable filled 85.8% of its 1000 while `o`
-# filled 76.4% of its 500 -- 9.4 points apart, where 0.5.0 had them level.
+# It was still too much, and the correction came in two steps. 0.8.1 took the
+# factor to 1.11, on the grounds that filling the cell is a decision about the
+# Hangul alone while the Hangul is never read alone. 0.9.0 goes further,
+# because by then the Latin had come down: against a cap of 694 rather than
+# 792 the syllables no longer have to be large to hold their own.
 #
-# 1.11 closes about a sixth of that gap: 84.3% against the same 76.4%, 7.9
-# points. It costs spacing, which goes from 16.6% of the ink to 18.6% against
-# Pretendard's own 13.0%, and that is the trade this constant makes. Below
-# about 1.09 the syllables of a word stop reading as one lump, which is the
-# fault 0.7.0 was fixed to cure.
+# 1.067 puts a syllable's ink at 0.912 of the em rather than 0.947. Measured
+# as how much of its own cell each script fills, that is 82.1% for the Hangul
+# against 77.6% for `o` -- 4.5 points apart, the closest the two have been
+# since 0.5.0, where 0.8.0 had opened them to 9.4.
+#
+# What it costs is spacing: 21.8% of the ink between one syllable and the
+# next, which is what 0.7.0 ran at and the loosest this font has judged still
+# reads as one lump. Below about 1.06 it stops doing so.
 #
 # Scaling both directions rather than only the width is what keeps the
 # proportion at the donor's 0.890. Reaching the same spacing by widening alone
@@ -77,13 +79,11 @@ PRESEVKA_HANGUL_CELL = 1000
 # stems while leaving the horizontals; scaling both asks the solver below for a
 # lighter wght instead, which thins the two together.
 #
-# What it costs besides is height: 1.199 of the Latin cap, against the 1.216
-# Pretendard keeps, 1.219 for Sarasa Gothic and 1.307 for D2Coding. The cause
-# is not the Hangul but the Latin. Pretendard's cap is 0.818 of its Hangul
-# advance where ours is 0.735, and matching that would need a cap of 818 units
-# in a 500-unit cell. On this grid the two cannot both be had, so every Korean
-# monospace picks a point on one line.
-PRESEVKA_HANGUL_OUTLINE_SCALE = 1.11
+# What it costs besides is height against the cap: 1.314, where 0.8.2 was
+# 1.196 and Pretendard keeps 1.216. That is not the Hangul growing but the
+# Latin shrinking, and it is the trade the cap in private-build-plans.toml
+# makes.
+PRESEVKA_HANGUL_OUTLINE_SCALE = 1.067
 
 # Then widen the Hangul alone, on top of that enlargement.
 #
@@ -120,7 +120,7 @@ PRESEVKA_STEM_PROBE_HANGUL = "\u3163"  # HANGUL LETTER I, one bare vertical stro
 # so this sits between them. It also pulls Thin back towards the others:
 # Pretendard's axis stops at 45 and cannot go thinner, and against the higher
 # target that floor is 9% out rather than 36%.
-PRESEVKA_HANGUL_STEM_RATIO = 0.96
+PRESEVKA_HANGUL_STEM_RATIO = 1.09
 
 # How far the two stems may end up apart: this fraction of the Latin stem, or
 # PRESEVKA_STEM_SLACK units, whichever is larger. Coordinates are rounded on the
