@@ -70,7 +70,7 @@ Presevka의 라틴 글자는 [Iosevka](https://github.com/be5invis/Iosevka)의 �
 </style>
 ```
 
-버전을 고정해야 한다면 [Releases](https://github.com/oqoz/presevka/releases/latest)의 `woff2` 묶음을 받아 직접 호스팅하세요!
+버전을 고정해야 한다면 [Releases](https://github.com/oqoz/presevka/releases)의 `woff2` 묶음을 받아 직접 호스팅하세요!
 
 ## License
 
