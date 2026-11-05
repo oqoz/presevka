@@ -21,6 +21,7 @@
 
 1. [Github release 에서 다운받기](https://github.com/oqoz/presevka/releases/latest)
 2. [Source 에서 빌드하는 방법 보기](./docs/build_from_source_instruction.md)
+3. [Web font 로 사용하는 방법 보기](#web-fonts)
 
 ## 특징
 
@@ -58,7 +59,20 @@ Presevka의 라틴 글자는 [Iosevka](https://github.com/be5invis/Iosevka)의 �
   </tr>
 </table>
 
-## 라이선스
+## Web fonts
+
+[가장 최신 버전의 폰트](https://github.com/oqoz/presevka/releases/latest)에 대해서 웹폰트를 제공합니다.
+
+```html
+<link rel="stylesheet" href="https://oqoz.github.io/presevka/presevka.css">
+<style>
+  body { font-family: Presevka, monospace; }
+</style>
+```
+
+버전을 고정해야 한다면 [Releases](https://github.com/oqoz/presevka/releases/latest)의 `woff2` 묶음을 받아 직접 호스팅하세요!
+
+## License
 
 - 완성 폰트와 폰트 수정물: [SIL Open Font License 1.1](./LICENSE)
 - Presevka의 Python/shell 빌더: [MIT](./LICENSE-CODE)
@@ -66,7 +80,7 @@ Presevka의 라틴 글자는 [Iosevka](https://github.com/be5invis/Iosevka)의 �
 - 원본 출처: [THIRD_PARTY.md](./THIRD_PARTY.md)
 - 변경 이력: [FONTLOG.md](./FONTLOG.md)
 
-## 크레딧
+## Credit
 
 - [Iosevka](https://github.com/be5invis/Iosevka) — Renzhi Li / The Iosevka Project Authors
 - [Pretendard](https://github.com/orioncactus/pretendard) — Kil Hyung-jin and upstream authors
