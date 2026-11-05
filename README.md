@@ -62,8 +62,9 @@ Presevka의 라틴 글자는 [Iosevka](https://github.com/be5invis/Iosevka)의 �
 ## Web fonts
 
 [가장 최신 버전의 폰트](https://github.com/oqoz/presevka/releases/latest)에 대해서 웹폰트를 제공합니다.
-모든 버전에 대해 각각 웹폰트를 제공하고 있지는 않으니, 특정 버전으로 고정해야 한다면 [Releases](https://github.com/oqoz/presevka/releases)의 `woff2` 묶음을 받아 호스팅해야 합니다!
-로
+
+모든 버전에 대해 웹폰트를 제공하고 있지는 않으니, 특정 버전으로 고정해야 한다면 [Releases](https://github.com/oqoz/presevka/releases)의 `woff2` 묶음을 받아 호스팅해야 합니다!
+
 ```html
 <link rel="stylesheet" href="https://oqoz.github.io/presevka/presevka.css">
 <style>
