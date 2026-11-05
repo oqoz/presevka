@@ -1,6 +1,6 @@
 # 소스에서 빌드하기
 
-완성된 폰트는 [릴리스](https://github.com/xkho/presevka/releases/latest)에서 받을
+완성된 폰트는 [릴리스](https://github.com/oqoz/presevka/releases/latest)에서 받을
 수 있습니다. 이 문서는 직접 빌드해야 하는 경우를 위한 것입니다.
 
 - 라틴 글자꼴을 바꾸고 싶은데 사용하는 앱이 OpenType 피처를 지원하지 않을 때
@@ -23,7 +23,7 @@ Node.js는 Iosevka를 빌드할 때만 쓰입니다. 16 이상이면 Iosevka가 
 ## 2. 빌드
 
 ```sh
-git clone https://github.com/xkho/presevka.git
+git clone https://github.com/oqoz/presevka.git
 cd presevka
 
 make doctor
